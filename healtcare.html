@@ -1,0 +1,982 @@
+
+<div  style="background-color:#fdfdfd;font-family:segoe_uiregular" ng-controller="homeCtrl">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="/home/images/MiLifecare.png" class="milogo" alt="MiLogo" style="width:100px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <button type="button" data-target="#add" data-toggle="modal" class="btn btn-info" style="margin-top:10px;margin-left:66%">Request for demo</button>
+                <div class="modal fade" id="add">
+                    <div class="modal-dialog" style="width:70%">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header" style="background-color: #5bc0de">
+                                <button type="button" class="close"
+                                        data-dismiss="modal" onclick="clr()">
+                                    <span aria-hidden="true">&times;</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Enter your details to get a demo
+                                </h4>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                                <form name="regForm" novalidate>
+                                    <script type="text/ng-template" id="error-messages">
+
+                                        <div ng-message="required">Required!</div>
+                                        <div ng-message="maxlength">Too long!</div>
+                                        <div ng-message="minlength">Too short!</div>
+                                        <div ng-message="pattern">Invalid Email!</div>
+
+                                    </script>
+
+                                    <div class="form-group">
+
+                                        <label for="exampleInputEmail1">Name*:</label>
+                                        <input type="text" class="form-control" name="name" ng-model="dem.Name" required placeholder="Enter Name" ng-minlength="2" ng-maxlength="8" style="width:300px" required />
+                                        <div  style="color:red" ng-messages="regForm.name.$error" ng-show="regForm.name.$dirty">
+
+                                            <div ng-message="maxlength">Too long!</div>
+                                            <div ng-message="minlength">Too short!</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-group" >
+                                        <label style="margin-left: -300px;">Member Type:</label>
+                                        <select type="button" style="background-color:none;width:300px;margin-top: 25px" class="form-control btn btn-default"  >
+                                            select: <span class="caret"></span>
+
+                                            <ul class="dropdown-menu"  role="menu">
+                                                <option href="" >Doctor</option>
+                                                <option href="">Hospital</option>
+                                                <option href="" >Clinic</option>
+                                                <option href="">Laboratory</option>
+                                                <option href="" >Pharmacy</option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+
+
+                                    <br>
+                                    <br>
+
+
+                                    <script type="text/javascript">
+                                        $(".dropdown-menu li a").click(function(){
+                                            $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+                                            $(
+                                    </script>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Phone No:</label>
+                                        <input type="number" class="form-control" ng-model="dem.Phone_Number"
+                                               id="exampleInputPassword1" name="altphone" placeholder="Enter your contact number" style="width:300px"   ng-pattern="/^([7-9][0-9]*)$/" ng-minlength="10" ng-maxlength="10" required/>
+                                        <div style="color:red" ng-messages="regForm.altphone.$error" ng-show="regForm.altphone.$dirty">
+
+                                            <div ng-message="maxlength"> phone number should be 10 digits</div>
+                                            <div ng-message="minlength"> phone number should be 10 digits</div>
+                                            <div ng-message="pattern">Invalid phone no!</div>
+                                            <div ng-message="noMatch">Alternate contact should be different from original contact!</div>
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+
+
+                            </div>
+
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <button type="submit" ng-click="reqdemo(dem)"  class="btn btn-info"
+                                        data-dismiss="modal" ng-disabled="regForm.$invalid">
+                                    Request Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+
+<div class="row-sm-12" style="overflow-x:hidden;margin-bottom: ">
+
+    <div ng-hide="showme" class="row-sm-12"  >
+
+        <div class="row-sm-12 row-md-12 row-lg-12"  >
+            <div class="col-sm-7 col-md-6 col-lg-8" >
+
+                <img src="/home/images/1.png" style="width:100%" />
+            </div>
+            <div class="col-sm-4 col-md-6 col-lg-3" style="margin-top:50px;margin-left:40px">
+                <p>Mi-Lifecare is the world's first medical network.For patients and doctors alike this medical network brings in alot of benefits.From the inception of our medical network we have members joining our network everyday. We have seen a growth in our network over 50% month on month.</p>
+            </div>
+
+        </div>
+
+
+        <div >
+
+            <div class="row-sm-4" >
+                <img src="/home/images/5.jpg"  style="width:95%;margin-left:2%;margin-top:4%" />
+
+            </div>
+        </div>
+        <hr>
+        <div class="row-sm-4">
+            <div>
+                <img src="/home/images/12.jpg" style="height:500px;width:100%" />
+
+            </div>
+            <hr>
+            <div class="row-sm-4 " style="overflow-x:hidden;margin-top:40px;" >
+                <div class="col-sm-6 col-md-6 col-lg-8" >
+
+                    <img src="/home/images/4.png"  style="width:100%"  />
+                </div>
+                <div class="col-sm-5 col-md-6 col-lg-3" style="margin-left:40px">
+                    <h2>Medical Timeline</h2>
+                    <p>Medical timeline is one of the unique features of Mi-lifecare. We have designed our medical timeline in such a way doctors can understand the exact condition of their patients in just a matter of minutes.Mi-Lifecare helpsdoctor to easily understand a patient's condition with ease.Patients too can use their medical timeline to their hospital visits and their body condition. </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row-sm-4" style="overflow-x:hidden;margin-top:40px;" >
+                <div class="col-sm-6 col-md-6 col-lg-8" >
+
+                    <img src="/home/images/2.png" style="width:100%" />
+                </div>
+                <div class="col-sm-5 col-md-6 col-lg-3" style="margin-left:40px">
+                    <h2>Data Security</h2>
+                    <p>Security is one of the most important aspect of our application. We have a seperate team that is dedicated in improving the security of the application in regards with technology developement.Mi-Lifecare has followed all the rules and regulations set up by government of india. Thr government of has released a publication on how to store EMR and the security steps that should be followed.Mi-Lifecare has made sure to follow all the rules laid down by the government.  </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row-sm-4">
+                <div class="col-sm-6 col-md-6 col-lg-8">
+                    <img src="/home/images/3.png" style="width:100%"/>
+                </div>
+                <div class="col-sm-5 col-md-6 col-lg-3" style="margin-left:40px;margin-top: 2%">
+                    <h2>Mi-Feed</h2>
+                    <p>
+                        Mi-Lifecare has designed a unique way in which doctors and other hospital providers can stay in touch with their customer at all times. This unique technology is called as
+                        MI-FEED. This technology lets you to inform all our customers or your customers alone about events or awareness or health camps.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr >
+            <div class="row-sm-12 row-md-6 row-lg-12" style="text-align: center;position:center">
+
+
+                <div class="col-sm-12 col-md-12 col-lg-12" >
+                    <h2>Our clients impression on our network</h2>
+                    <hr style="width:50%">
+                    <p >
+                        Excellent service i personally think this is the future of the healthcare industry. This type of network is one of the most awaited in our industry.</br>
+                        -Pasumai Pharmacy
+                    </p>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div  ng-show="showme==4" style="margin-left:20px">
+
+                                <div class="row-sm-14" >
+                                    <div class="col-sm-12 col-md-6 col-lg-6" >
+                                       <div class="row">
+                                        <div class="col-sm-6 col-md-12 col-lg-12">
+                                        <h2>Partner With Mi-Lifecare</h2>
+                                        
+                                        
+                                            <a type="button" class="btn btn-info" href="#"
+                                               data-toggle="tab" style="margin-left: 195%;
+    margin-top: -11%;">Back</a></div>
+                                               </div>
+                                        <form name="homeform3" novalidate>
+                                            <script type="text/ng-template" id="error-messages">
+
+                                                <div ng-message="required">Required!</div>
+                                                <div ng-message="maxlength">Too long!</div>
+                                                <div ng-message="minlength">Too short!</div>
+                                                <div ng-message="pattern">Invalid Email!</div>
+
+                                            </script>
+                                            <div class="form-group" >
+
+                                                <label  class="form-control-label">Name*:</label>
+                                                <input type="text" ng-model="home3.First_Name" name="name" class="form-control" placeholder="Enter your Name" id="username" style="width:63%" ng-maxlength="25" minlength="2" ng-pattern="/^([a-zA-Z.]*)$/" required>
+                                                <div style="color:red" ng-messages="homeform3.name.$error" ng-show="homeform3.name.$dirty" class="my-messages">
+                                                    <div ng-messages-include="error-messages-name" class="some-message">
+                                                        <div ng-message="maxlength">Too long!</div>
+                                                        <div ng-message="minlength">Too short!</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="form-control-label">Organisation Name:</label>
+                                                <input type="text" ng-model="home3.Oraganisation_Name" class="form-control" placeholder="Enter your Organisation Name" id="username" style="width:63%">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">E-mail Id*:</label>
+                                                <input type="text" ng-model="home3.Email" class="form-control" placeholder="Enter your E-mail Id" id="username" name="emailid" style="width:63%"  ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required><div style="color:red" ng-messages="homeform3.emailid.$error" ng-show="homeform3.emailid.$dirty">
+                                                <div ng-messages-include="error-messages"></div>
+                                            </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">Phone No*:</label>
+                                                <input type="text" ng-model="home3.Phone_Number" class="form-control" placeholder="Enter your Contact No" name="phonenum" id="username" style="width:63%" ng-pattern="/^([7-9][0-9]*)$/" ng-minlength="10" ng-maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                                <div  style="color:red" ng-messages="homeform3.phonenum.$error" ng-show="homeform3.phonenum.$dirty">
+                                                    <div ng-message="maxlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="minlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="pattern">Invalid phone no!</div>
+                                                    <div ng-message="noMatch">Emergency contact should be different from original contact!</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="form-control-label">Website:</label>
+                                                <input type="text"  ng-model="home3.Website" class="form-control" placeholder="Enter your Website" id="username" style="width:63%">
+                                            </div>
+                                        </form>
+                                        <div class="col-sm-12  col-md-6 col-lg-4" style="margin-top:5%;margin-bottom:5%">
+                                            <button type="button" class="btn btn-info" ng-click="partner(home3);clear()"
+                                                    data-toggle="modal" ng-disabled="homeform3.$invalid" >submit</button>
+                                            <button type="button" class="btn btn-info" href="" ng-click="clear()"
+                                                    data-toggle="modal" style="margin-left:1%">cancel</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6" style="margin-top: 10%;margin-bottom: 27%;">
+                                        <div>
+                                            
+                                            <p style="margin-top: 20px;">
+                                                Mi-Lifecare's network is spread throughout the worlds and is growing everyday by new people joining our network. Mi-Lifecare has designed and created this partner program so that any organisation related to the healthcare industry can partner with us to reach our entire network all over the world. This program is also applicable for the government.
+                                            </p></div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+    <div  ng-show="showme==5" style="margin-left:20px">
+
+                                <div class="row-sm-14" >
+                                    <div class="col-sm-12 col-md-6 col-lg-6" >
+                                        <div class="row">
+                                        <div class="col-sm-6 col-md-12 col-lg-12">
+                                        <h2>Referral Program</h2>
+                                        
+                                        
+                                            <a type="button" class="btn btn-info" href="#"
+                                               data-toggle="tab" style="margin-left: 195%;
+    margin-top: -11%;">Back</a></div>
+                                               </div>
+                                        <form name="homeform2" novalidate>
+                                            <script type="text/ng-template" id="error-messages">
+
+                                                <div ng-message="required">Required!</div>
+                                                <div ng-message="maxlength">Too long!</div>
+                                                <div ng-message="minlength">Too short!</div>
+                                                <div ng-message="pattern">Invalid Email!</div>
+
+                                            </script>
+                                            <div class="form-group" >
+
+                                                <label  class="form-control-label">Name*:</label>
+                                                <input type="text" ng-model="home2.First_Name" name="First_Name" class="form-control" placeholder="Enter your Name" id="username" style="width:63%" ng-maxlength="25" minlength="2" ng-pattern="/^([a-zA-Z.]*)$/" required>
+                                                <div style="color:red" ng-messages="homeform2.First_Name.$error" ng-show="homeform2.First_Name.$dirty" class="my-messages">
+                                                    <div  ng-messages-include="error-messages-name" class="some-message">
+                                                        <div ng-message="maxlength">Too long!</div>
+                                                        <div ng-message="minlength">Too short!</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-group" style="width:63%" >
+                                                <label for="exampleInputEmail1"  >Referral Type*:</label>
+                                                <select type="button"  style="background-color:none" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown" >
+                                                    select: <span class="caret"></span>
+
+                                                    <ul class="dropdown-menu" ng-model="home2.Referral_Type" role="menu">
+                                                        <option  href="" >Application Developer</option>
+                                                        <option href="">Brand executive</option>
+                                                        <option href="">Customer care executive</option>
+                                                        <option href="">Customer relationship executive</option>
+                                                        <option href="">Client relationship executive</option>
+                                                        <option  href="">Delivery executive</option>
+                                                        <option href="">Event executive</option>
+                                                        <option  href="">Human Resource</option>
+                                                    </ul>
+                                                </select >
+                                            </div>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">E-mail Id*:</label>
+                                                <input type="text" ng-model="home2.Email" class="form-control" placeholder="Enter your E-mail Id" id="username" name="Email" style="width:63%"  ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+                                                <div ng-messages="homeform2.Email.$error" ng-show="homeform2.Email.$dirty">
+                                                    <div style="color:red" ng-messages-include="error-messages">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">Phone No*:</label>
+                                                <input type="text" ng-model="home2.Phone_Number" class="form-control" placeholder="Enter your Contact No" name="Phone_Number" id="username" style="width:63%" ng-pattern="/^([7-9][0-9]*)$/" ng-minlength="10" ng-maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                                <div style="color:red" ng-messages="homeform2.Phone_Number.$error" ng-show="homeform2.Phone_Number.$dirty">
+                                                    <div ng-message="maxlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="minlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="pattern">Invalid phone no!</div>
+                                                    <div ng-message="noMatch">Emergency contact should be different from original contact!</div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="col-sm-12  col-md-6 col-lg-4" style="margin-top:5%;margin-bottom:5%">
+                                            <button type="button" class="btn btn-info" ng-click="referralprogram(home2);clear()"
+                                                    data-toggle="modal" ng-disabled="homeform2.$invalid" >submit</button>
+                                            <button type="button" class="btn btn-info" href="" ng-click="clear()"
+                                                    data-toggle="modal" style="margin-left:1%">cancel</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6" style="margin-top:15%;margin-bottom:34%">
+                                        <div>
+                                            
+                                            <p>
+                                                Mi-Lifecare's referral program can be joined by anyone. By being part of our referral program you earn an extra income lifelong. This program is also an innovative solution designed by Mi-Lifecare to help people and doctors join our medical Network with ease.
+                                            </p></div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+   <div  ng-show="showme==6" style="margin-left:20px">
+
+                                <div class="row-sm-14" >
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <div class="row">
+                                        <div class="col-sm-6 col-md-12 col-lg-12">
+                                        <h2>Employee Program</h2>
+                                        
+                                        
+                                            <a type="button" class="btn btn-info" href="#"
+                                               data-toggle="tab" style="margin-left: 195%;
+    margin-top: -11%;">Back</a></div>
+                                               </div>
+                                        <form name="homeform1" novalidate>
+                                            <script type="text/ng-template" id="error-messages">
+
+                                                <div ng-message="required">Required!</div>
+                                                <div ng-message="maxlength">Too long!</div>
+                                                <div ng-message="minlength">Too short!</div>
+                                                <div ng-message="pattern">Invalid Email!</div>
+
+                                            </script>
+                                            <div class="form-group" >
+
+                                                <label  class="form-control-label">Name*:</label>
+                                                <input type="text" ng-model="home1.First_Name" name="First_Name" class="form-control" placeholder="Enter your Name" id="username" style="width:63%" ng-maxlength="25" minlength="2" ng-pattern="/^([a-zA-Z.]*)$/" required>
+                                                <div style="color:red" ng-messages="homeform1.First_Name.$error" ng-show="homeform1.First_Name.$dirty" class="my-messages">
+                                                    <div ng-messages-include="error-messages-name" class="some-message">
+                                                        <div ng-message="maxlength">Too long!</div>
+                                                        <div ng-message="minlength">Too short!</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-group" style="width:63%">
+                                                <label for="exampleInputEmail1" >Designation*:</label>
+                                                <select type="button"  style="background-color:none" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                    select: <span class="caret"></span>
+
+                                                    <ul class="dropdown-menu"  role="menu">
+                                                        <option  href="" >Application Developer</option>
+                                                        <option href="">Brand executive</option>
+                                                        <option href="">Customer care executive</option>
+                                                        <option href="">Customer relationship executive</option>
+                                                        <option href="">Client relationship executive</option>
+                                                        <option  href="">Delivery executive</option>
+                                                        <option href="">Event executive</option>
+                                                        <option  href="">Human Resource</option>
+                                                    </ul>
+                                                </select >
+                                            </div>
+
+                                            <div class="form-group" >
+                                                <label  class="form-control-label" style="margin-top:10px">E-mail Id*:</label>
+                                                <input type="text" ng-model="home1.Email" class="form-control" placeholder="Enter your E-mail Id" id="username" name="Email" style="width:63%"  ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required ><div style="color:red"  ng-messages="homeform1.Email.$error" ng-show="homeform1.Email.$dirty">
+                                                <div ng-messages-include="error-messages"></div>
+                                            </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">Phone No*:</label>
+                                                <input type="text" ng-model="home1.Phone_Number" class="form-control" placeholder="Enter your Contact No" name="Phone_Number" id="username" style="width:63%" ng-pattern="/^([7-9][0-9]*)$/" ng-minlength="10" ng-maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  required>
+                                                <div style="color:red"  ng-messages="homeform1.Phone_Number.$error" ng-show="homeform1.Phone_Number.$dirty">
+                                                    <div ng-message="maxlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="minlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="pattern">Invalid phone no!</div>
+                                                    <div ng-message="noMatch">Emergency contact should be different from original contact!</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="form-control-label">Comments:</label>
+                                                <input type="text" ng-model="home1.Comments" class="form-control" placeholder="Post your comment" id="username" style="width:63%;height:100px">
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="form-control-label" >Resume:</label>
+                                                <input id="input-24" ng-model="home1.Resume" class="form-control" placeholder="Upload your resume" name="input24[]" type="file" multiple class="file-loading" style="width:63%">
+                                                <script>
+                                                    $(document).on('ready', function() {
+                                                        $("#input-24").fileinput({
+                                                            initialPreview: [
+                                                                'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
+                                                                'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg'
+                                                            ],
+                                                            initialPreviewAsData: true,
+                                                            initialPreviewConfig: [
+                                                                {caption: "Moon.jpg", size: 930321, width: "120px", key: 1},
+                                                                {caption: "Earth.jpg", size: 1218822, width: "120px", key: 2}
+                                                            ],
+                                                            deleteUrl: "/site/file-delete",
+                                                            overwriteInitial: false,
+                                                            maxFileSize: 100,
+                                                            initialCaption: "The Moon and the Earth"
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </form>
+                                        <div class="col-sm-12  col-md-6 col-lg-4" style="margin-top:5%;margin-bottom:5%">
+                                            <button type="button" class="btn btn-info" ng-click="employeeprogram(home1);clear()" ng-disabled="homeform1.$invalid"
+                                                    data-toggle="modal" >submit</button>
+                                            <button type="reset" class="btn btn-info" href="" ng-click="clear()"
+                                                    data-toggle="modal" style="margin-left:1%">cancel</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6" style="margin-top: 8%;
+    margin-bottom: 12%;">
+                                    
+                                        <div>
+                                            <p>
+                                                Mi-Lifecare does not offer only an innovative service it also offers an innovative office culture for all its employees. We make sure that all the employees at Mi-Lifecare work happily, and we also help them to maintain a balance between a work life and their personal life.
+                                            </p>
+                                            <h2>Vacant Positions:</h2>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+    <div  ng-show="showme==7"  >
+
+                                <div class="row-sm-12 row-md-12 row-lg-12" style="margin-left:20px">
+
+                                    <div class="col-sm-12 col-md-12 col-lg-6">
+
+                                        <div class="row">
+                                        <div class="col-sm-6 col-md-12 col-lg-12">
+                                        <h2>Contact Us</h2>
+                                        
+                                        
+                                            <a type="button" class="btn btn-info" href="#"
+                                               data-toggle="tab" style="margin-left: 195%;
+    margin-top: -11%;">Back</a></div>
+                                               </div>
+
+                                        <script type="text/javascript">
+                                            $('.dropdown-menu a').on('click', function(){
+                                                $('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');
+                                            })
+                                        </script>
+                                        <form name="homeform" novalidate>
+                                            <script type="text/ng-template" id="error-messages">
+
+                                                <div ng-message="required">Required!</div>
+                                                <div ng-message="maxlength">Too long!</div>
+                                                <div ng-message="minlength">Too short!</div>
+                                                <div ng-message="pattern">Invalid Email!</div>
+
+                                            </script>
+                                            <div class="form-group" >
+
+                                                <label  class="form-control-label">Name*:</label>
+                                                <input type="text" ng-model="home.First_Name" name="First_Name" class="form-control" placeholder="Enter Your Name" id="username" style="width: 63%;border-color:none" ng-maxlength="25" minlength="2" ng-pattern="/^([a-zA-Z.]*)$/" required>
+                                                <div ng-messages="homeform.First_Name.$error" ng-show="homeform.First_Name.$dirty" style="color:red">
+                                                    <div ng-messages-include="error-messages-name">
+                                                        <div ng-message="maxlength">Too long!</div>
+                                                        <div ng-message="minlength">Too short!</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-group"  style="width:70%">
+                                                <label for="exampleInputEmail1" style="margin-left:-90%" >Member Type:</label>
+                                                <select   style="background-color:none;width:90%;margin-top: 25px"  class="form-control btn btn-default dropdown-toggle"   >
+
+
+                                                    <option href="" >Doctors</option>
+                                                    <option href="">Hospital</option>
+                                                    <option href="">Clinic</option>
+                                                    <option href="">Labaratories</option>
+                                                    <option href="">Pharmacy</option>
+
+                                                </select>
+
+                                            </div>
+                                            <script type="text/ng-template" id="error-messages">
+                                                <div ng-message="required">Required!</div>
+                                                <div ng-message="maxlength">Too long!</div>
+                                                <div ng-message="minlength">Too short!</div>
+                                                <div ng-message="pattern">Invalid Email!</div>
+                                            </script>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">E-mail Id*:</label>
+                                                <input type="text" ng-model="home.Email" class="form-control" placeholder="Enter Your E-mail Id" id="username" name="Email" style="width: 63%;"  ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"  required><div ng-messages="homeform.Email.$error" ng-show="homeform.Email.$dirty" style="color:red">
+                                                <div ng-messages-include="error-messages" ></div>
+                                            </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">Phone No*:</label>
+                                                <input type="text" ng-model="home.Phone_Number" class="form-control" placeholder="Enter Your Contact No" name="phonenumber" id="username" style="width:63%;" ng-pattern="/^([7-9][0-9]*)$/" ng-minlength="10" ng-maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required >
+                                                <div ng-messages="homeform.phonenumber.$error" ng-show="homeform.phonenumber.$dirty" style="color:red">
+                                                    <div ng-message="maxlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="minlength"> phone number should be 10 digits</div>
+                                                    <div ng-message="pattern">Invalid phone no!</div>
+                                                    <div ng-message="noMatch">Emergency contact should be different from original contact!</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label  class="form-control-label">Comments:</label>
+                                                <input type="text" ng-model="home.Comments" class="form-control" placeholder="Post your comment" id="username" style="width: 63%;;height:200px" >
+
+                                            </div>
+                                        </form>
+                                         <div class="col-sm-12  col-md-6 col-lg-4" style="margin-top:5%;margin-bottom:5%">
+                                        <button type="button" class="btn btn-info"  ng-disabled="homeform.$invalid"
+                                                ng-click="contactus(home);clear()"  data-toggle="modal" style="margin-top:0%">Submit</button>
+
+                                        <button type="reset" class="btn btn-info" href="" ng-click="clear()"
+                                                data-toggle="modal" style=";margin-left:1%">Cancel</button>
+                                    </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6" style="margin-top:10%;margin-bottom:19%">
+                                        
+                                        <div>
+                                            <p style="color: #09d8d8;">
+                                                Mi-Lifecare has a customer centric approach. Hence any approach to contact us will be responded in a full fledged manner within 24 hours.
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                   
+                                </div>
+                            </div>
+
+    <div ng-show="showme==8">
+        <div class="row-sm-14" style="text-align: justify;">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-10" style="margin-bottom:3%">
+                <h2 style="text-align: center;">PRIVACY POLICY</h2>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <a type="button" class="btn btn-info" href="" onclick="clr();"
+                       data-toggle="tab" style="margin-left: 96%;margin-top: -7%;">Back</a></div>
+                <h3>1.GENERAL</h3>
+
+                We, M/s. Mi-Lifecare, a sole proprietorship having its office at Coimbatore, represented by its legal team, where such expression shall, unless repugnant to the context thereof, be deemed to include its respective legal heirs, representatives, administrators, permitted successors and assigns, the creator of this Privacy Policy ensure our steady commitment to Your privacy with regard to the protection of your invaluable information. This privacy policy contains information about the IOS/ Android app called mi-lifecare and the Website www.milifecare.com . In order to provide you with our uninterrupted use of services, We may collect and, in some circumstances, disclose information about you. To ensure better protection of Your privacy, We provide this notice explaining Our information collection and disclosure policies, and the choices You make about the way Your information is collected and used.
+
+                If You have any queries or concerns regarding this privacy policy, You should contact Our Customer Support Desk at 18001024793/ email Us at customercare@milifecare.com.
+
+                We provide the service of an iOS and Android Application/Website called milifecare. The App allows the Users to avail of services such as information about healthcare providers, booking appointments and viewing your medical history.
+
+                We provide the service through a web portal called www.milifecare.com. The Application / Website allows the user to avail the service rendered by us such as information about healthcare providers, booking appointments and viewing your medical history.
+
+                ANY CAPITALIZED WORDS USED HENCEFORTH SHALL HAVE THE MEANING ACCORDED TO THEM UNDER THIS AGREEMENT. FURTHER, ALL HEADING USED HEREIN ARE ONLY FOR THE PURPOSE OF ARRANGING THE VARIOUS PROVISIONS OF THE AGREEMENT IN ANY MANNER. NEITHER THE USER NOR THE CREATORS OF THIS PRIVACY POLICY MAY USE THE HEADING TO INTERPRET THE PROVISIONS CONTAINED WITHIN IT IN ANY MANNER.
+
+                1.DEFINITIONS:
+
+                (a) “We”, “Our”, and “Us” shall mean and refer to the creators of this privacy policy.
+
+                (b) “You”, “Your”, “Yourself” and “User” shall mean and refer to natural and legal individuals who use the Application/Website.
+
+                (c) “Application/Website” shall mean and refer to milifecare as created by
+
+                (d) “Website” shall mean and include to “milifecare” the website created and maintained by milifecare.
+
+                (e) “Personal Information” shall mean and refer to any personally identifiable information that we may collect from You.
+
+                (f) “Third Parties” refer to any Application/Website, website, company or individual apart from the User and the creator of the Application/Website.
+
+                <h3>2.OVERVIEW:</h3>
+
+                We are committed to respecting your online privacy. We further recognize Your need for appropriate protection and management of any Personal Information You share with us.
+
+                We are committed to respecting your online privacy. We further recognize Your need for appropriate protection and management of any Personal Information You share with us.
+
+                <h3>3.INFORMATION COLLECTED:</h3>
+
+                We may collect the following information:
+
+                (a) Personal data of the User such as, but not limited to, Your name, Your address, Your age, Your email address and Your Phone Number.
+
+                (b) Sensitive Personal Information which refers to Your financial information, such as but not limited to Your credit or debit card numbers and Your passwords.
+
+                (c) Sensitive information which refer to your medical information such as test reports, medication prescribed and all other related information thereof
+
+                (d) Tracking Information such as, but not limited to the IP address of Your device when connected to the Internet and internet cookies and browser cookies.
+
+                <h3>4.COOKIES:</h3>
+
+                We use data collection device known as “cookies” at certain stages of use of Our Application/Website. “Cookies” are small files situated on your mobile/ computer/ device’s hard disk that assists us in providing customized services. A cookie helps us analyse your preferences by, for example, recording the number of times you have used the Application/Website, and help us in tailoring our services to suit your interests. Further, there are certain features of the Application/Website that are available only through the use of a “cookie”. These “cookies” may be used whether you register on the Application/Website or not. However, a “cookie” does not give us access to your device.
+
+                You may choose to disable the “cookie” feature on your device. But this may prevent full utilization of the services provided by the Application/Website.
+
+                <h3>5.EXTERNAL LINKS ON THE APPLICATION/WEBSITE:</h3>
+
+                The Application/Website may include advertisements hyperlinks to other websites, Application/Websites, content or resources. We have no control over such external links present in the Application/Website, which are provided by persons or companies other than us.
+
+                You acknowledge and agree that We are not responsible for any collection or disclosure of your Personal Information by any external sites, Application/Websites, companies or persons, nor are do We endorse any advertising, products or other material on or available from such external Application/Website, websites or resources.
+
+                You further acknowledge and agree that We are not liable for any loss or damage which may be incurred by You as a result of the collection and/or disclosure of Your personal information by external Application/Websites, sites or resources, or as a result of any reliance placed by You on the completeness, accuracy or existence of any advertising, products or other materials on, or available from such Application/Websites, websites or resources. This external Application/Website, websites and resource providers may have their own privacy policies governing the collection, storage, retention and disclosure of Your Personal Information that You may be subject to. We recommend that You enter the external Application/Website or website and review their privacy policy.
+
+                We allow third parties/individuals to display advertisements when you use the Application/Website.
+
+                <h3>6.OUR USE OF YOUR INFORMATION:</h3>
+
+                The information provided by you at the time of registration shall be used to contact You when necessary. For more details about the nature of such communications, please refer to out Terms of Service. Further, your personal data and Sensitive Personal Information may be collected and stored by Us for internal record.
+
+                We use your tracking information such as IP addresses to help identify you and to gather broad demographic information.
+
+                We may release your Personal Information to a third-party in order comply with a Court Order or other similar legal procedure, or when we believe in good faith that such disclosure is necessary to comply with the law; prevent imminent physical harm or financial loss; or investigate or take action regarding illegal activities, suspected fraud, or violations of Our Terms of Use. We may disclose Personal Information to parties in compliance with our Copyright Policy as mentioned in the Terms of Use as we in our sole discretion believe necessary or appropriate in connection with an investigation of fraud, intellectual property infringement, piracy, or other unlawful activity. In case We are acquired by or merged with another company, We shall transfer information disclosed by You and information about You to the company we are acquired by or merged with. In the event of a merger or acquisition, We shall notify You by email/by putting a prominent notice on the Application/Website before Your Personal Information is transferred and becomes subject to a different privacy policy.
+
+                <h3>7.CONFIDENTIALITY:</h3>
+
+                You further acknowledge that this Application/Website may contain information which is designated confidential by us such as information on the healthcare providers and that you shall not disclose such information without our prior written consent.
+
+                Your information is regarded as confidential and therefore shall not be divulged to any third party, unless if legally required to do so to the appropriate authorities, or if necessary to ensure Users may fully avail of the services of the Application/Website.
+
+                We shall not sell, share, or rent your personal information to any third party or use your e-mail address for unsolicited mail. Any communication by Us to You shall be undertaken in accordance with Our Terms of Service and Privacy Policy.
+
+                <h3>8.  DISCLOSURE OF YOUR INFORMATION TO THIRD PARTIES:</h3>
+
+                Due to the existing regulatory environment, we cannot ensure that all of your Personal Information shall never be disclosed in ways other than those described in this Privacy Policy. For example, but without limiting and foregoing to, we may be forced to disclose Your Personal Information to the government, law enforcement agencies or other Third Parties. Under certain circumstances, Third Parties may unlawfully intercept or access transmission or private communications, or abuse or misuse Your Personal Information that they may collect from our Application/Website. Therefore, although we use industry standard practices to protect your privacy, we do not promise, and you should not expect, that your personally identifiable information or private communications would always remain private.
+
+                As a matter of policy, we do not sell or rent any Personal Information about You and/or disclosed by you to Third Parties.
+
+                8.1 External Service Providers: There may be a number of services offered by external service providers that help You use our Application/Website. If You choose to use these optional services, and in the course of doing so, disclose information to the external service providers, and/ or grant them permission to collect information about You, then their use of Your information is governed by their privacy policy.
+
+                8.2 Other Corporate Entities: We share much of our data, including Your Personal Information, with Our parent and/ or subsidiaries that are committed to serving Your needs through use of Our Application/Website and related services, throughout the world. Such data shall be shared for the sole purpose of enhancing Your experience of using the Application/Website. To the extent that these entities have access to your information, they shall treat it at least as protectively as they treat information they obtain from their other members. It is possible that We and/or its subsidiaries, or any combination of such, could merge with or be acquired by another business entity. Should such a combination occur, you should expect that we would share some or all of your information in order to continue to provide the service. You shall receive notice of such event (to the extent it occurs).
+
+                8.3 Law and Order: We cooperate with law enforcement inquiries, as well as other third parties to enforce laws, such as: intellectual property rights, fraud and other rights. We can, and You so authorize Us, disclose Your Personal Information to law enforcement and other government officials as We, in Our sole discretion, believe necessary or appropriate, in connection with an investigation of fraud, intellectual property infringements, or other activity that is illegal or may expose Us/ Us or You to any legal liability. >
+
+                Any information that you make publically available on the site may be potentially viewed by any party, and by posting such material it is deemed that you consent to share such information with such parties.
+
+                <h3>9.ACCESSING, REVIEWING AND CHANGING YOUR PROFILE:</h3>
+
+                Following registration, you can review and change the information you submitted at the stage of registration, except your display name/ user name. An option for facilitating such change shall be present on the home screen of the Application/Website and such change can be facilitated by emailing us at customercare@milifecare.com. If you change any information, we may keep track of your old information.
+
+                Following registration, you can review and change the information you submitted at the stage of registration, except your display name/ user name. An option for facilitating such change shall be present on the home screen of the Application/Website and such change can be facilitated by emailing us at customercare@milifecare.com. If you change any information, we may keep track of your old information.
+
+                To remove your profile so that others cannot view it, contact our customer support at customercare@milifecare.com.
+
+                We shall retain in our files information you have requested to remove for certain circumstances, such as to resolve disputes, troubleshoot problems and enforce Our terms and conditions. Further, such prior information is never completely removed from Our databases due to technical and legal constraints, including stored 'back up' systems. Therefore, You should not expect that all of Your personally identifiable information shall be completely removed from our databases in response to Your requests.
+
+                <h3>10.CONTROL OF YOUR PASSWORD:(OPTIONAL)</h3>
+
+                When you register on the Application/Website, You shall be asked to choose a password. You are entirely responsible for maintaining the confidentiality of your password. It is important that You protect it against unauthorized access of Your account and information by choosing Your password carefully, keeping Your password and device secure by signing out after using Our services and exercising caution in disclosing Your password if needed.
+
+                You agree not to use the account, username, email address or password of another User at any time. Further, if you choose to disclose Your password to any Third Party, You are solely responsible for all actions taken with Your account information and password, including fees. If you lose control of your password, You may lose substantial control over Your Personal Information and may be subject to legally binding actions taken on Your behalf. Therefore, in the event of loss of your password, You should immediately change Your password. Further, You agree to notify Us immediately if You suspect any consistent unauthorized use of Your account or access to Your password even after changing it.
+
+                <h3>11.SECURITY:</h3>
+
+                We treat data as an asset that must be protected against loss and unauthorized access. We employ many different security techniques to protect such data from unauthorized access by members inside and outside Mi-Lifecare. We follow generally accepted industry standards to protect the Personal Information submitted to us and information that we have accessed. However, “perfect security” does not exist on the Internet. You therefore agree that any security breaches beyond the control of Our standard security procedures are at Your sole risk and discretion.
+
+                <h3>12.INDEMNITY:</h3>
+
+                You agree and undertake to indemnify us against in any suit or dispute by any Third Party arising out of disclosure of Personal Information by You to Third Parties either through Our Application/Website or otherwise and Your use and access of websites, Application/Websites and resources of Third Parties. We assume no liability for any actions of Third Parties with regard to Your Personal Information, which You may have disclosed to such Third Parties.
+
+                <h3>13.SEVERABILITY:</h3>
+
+                Each paragraph of this privacy policy shall be and remain separate from and independent of and severable from all and any other paragraphs herein except where otherwise expressly indicated or indicated by the context of the agreement. The decision or declaration that one or more of the paragraphs are null and void shall have no effect on the remaining paragraphs of this privacy policy.
+
+                <h3>14.AMENDMENT:</h3>
+
+                Our Privacy Policy may change from time to time. Hence we shall post any privacy policy changes on the homepage of the Application/Website/ notify you by email.
+
+                <h3>15.DISCLAIMER:</h3>
+
+                We cannot ensure that all of your private communications and other personal information (including sensitive information like credit card information and bank account number) shall never be disclosed in ways not otherwise described in this Privacy Policy. Therefore, although We are committed to protecting Your privacy, We do not promise, and You should not expect, that Your personal information shall always remain private. As a User of the Application/Website, You understand and agree that You assume all responsibility and risk for Your use of the Application/Website, the internet generally, and the documents You post or access and for Your conduct on and off the Application/Website.
+
+            </div>
+            <div class="col-sm-1">
+                <!--   sdfddf -->
+            </div>
+        </div>
+    </div>
+    <div ng-show="showme==9">
+        <div class="row-sm-14" style="text-align: justify;">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-10" style="margin-bottom:3%">
+                <h2 style="text-align: center;">TERMS OF SERVICE</h2>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <a type="button" class="btn btn-info" href="" onclick="clr();"
+                       data-toggle="tab" style="margin-left: 96%;margin-top: -7%;">Back</a></div>
+                <h3>1.GENERAL</h3>
+
+                In terms of Information Technology statutes, this document is an electronic record. Being generated by a computer system it does not require any physical or digital signatures. This document is published in accordance with the provisions of Information Technology regulations that require publishing the rules and regulations, privacy policy and Terms of Use for access or usage of:
+
+                (a) The IOS/ Android Application/Website milifecare (hereinafter referred to as "Application/Website “or “App” ) and The Website www.milifecare.com (hereinafter referred to as “Website”), owned by M/s. Mi-lifecare, a sole proprietorship, having its office at coimbatore, represented by its founder Barath. where such expression shall, unless repugnant to the context thereof, be deemed to include its respective legal heirs, representatives, administrators, permitted successors and assigns;
+
+                (b) For the purpose of these Terms of Use, along with any amendments to the same, and wherever the context so requires "You" or "User" shall mean any natural or legal person who has agreed to become a user of theApplication/Website by visiting/logging in the websiteor by installing the Application. The Application/Website may also provides certain services without registration/acceptance, and such provision of services does not absolve You of this contractual relationship. The term "We", "Us", "Our" shall mean milifecare or Company. “Agreement” shall mean and refer to this Terms of Service, including any amendments that may be incorporated into it. “Third Party” shall mean and refer to any individual(s), company or entity apart from the User and milifecare. The headings of each section in this Agreement are only for the purpose of organising the various provisions under this Agreement in an orderly manner. These headings shall not be used by either party to interpret the provisions contained under them in any manner. Further, the headings have no legal or contractual value.
+
+                (c) By using / visiting the Application/Website, You accept and agree to be bound by this Agreement, the Privacy Policy, as well as rules, guidelines, policies, terms, and conditions applicable to any service that is provided by this Application/Website, that shall be deemed to be incorporated into this Terms of Use and shall be considered as part and parcel of this Terms of Use. Your use of Our Application/Website is evidence that You have read and agreed to be contractually bound by these Terms of Service and our Privacy Policy. Please read both carefully. The use of this Application/Website by You is governed by this policy and any policy so mentioned by terms of reference.
+                If you do not agree with any of these terms, please discontinue using the Application/Website
+
+                (d) We hold the sole right to modify the Terms of Service without prior permission from you or providing notice to You. The relationship creates on you a duty to periodically check the Terms of Service and stay updated on its requirements. If You continue to use the Application/Website or avail any of its services without registration following such change, this is deemed as consent by You to the so amended policies. Your continued use of the Application/Website is conditioned upon your compliance with the Terms of Service, including but not limited to compliance with the Terms of Service even after alterations, if any.
+
+                <h3>2.MEMBERSHIP</h3>
+
+                To fully avail the services of the Application/Website and use it, registration is required. Such registration will be done at one of our affiliated doctor’s clinics / hospitals. Membership is available only to those above the age of 18, barring those “Incompetent to Contract”. If You are a minor and wish to use the Application/Website, You may do so through Your legal guardian and the Companyreserves the right to terminate Your account on knowledge of You being a minor and having registered on the Application/Website or availing any of its services. Further, at any time during Your use of this Application, including but not limited to the time of registration, You are solely responsible for protecting the confidentiality of Your username and password, and any activity under the account shall be deemed to have been done by You. In the case that You provide Us with false and/or inaccurate details or milifecare has reason to believe You have done so, We hold the right to permanently suspend Your account.
+
+                <h3>3.COMMUNICATIONS</h3>
+
+                By using this Application/Website, it is deemed that You have consented to receiving telephonic calls, SMSs alerts and/or emails from Us at any time We deem fit. Such communications shall be sent to You on the telephone number and/or email id provided by You for the use of this Application/Website which are subject to our Privacy Policy. These communications include, but are not limited to contacting you through information received from Third Parties. Such communications by us is for purposes that inter alia include clarification calls, marketing calls and promotional calls. In case You wish to stop receiving notifications from Us with regard to marketing and promotional calls/ with regard to any communication received from Us, You may email Us at customercare@milifecare.com / call Us at 18001024793. You may also be contacted by Service Providers with whom we have entered into a contract in furtherance of our rights, duties and obligations under this document and other policies followed by us and with whom you have become friends with from the website. Such contact shall be made only in pursuance of such objectives, and no other calls shall be made. In addition, You may also be contacted by Third Parties who may have access to the information disclosed by You or to whom We may have disclosed Your information for purposes such as, but not limited to, statistical compilations. The sharing of the information provided by you shall be governed by the Privacy Policy.
+
+                <h3>4.CHARGES</h3>
+
+                Thevisiting, downloading and installing of this Application/Website /addonsare free of cost. However, we reserve the right to amend this no-fee policy and charge Users for downloading and installing the Application/Website. In the event of such change in policy, Users shall be intimated of the same via email/telephone and such change shall be effective as soon as Users have been intimated. Subsequent to such change, it is the choice of the User whether or not to continue with the services offered by Us
+
+                <h3>5.TAXES</h3>
+
+                The User takes full responsibility for payment of all taxes and fees that are levied or arise in the course of use of the Application /Website, including but not limited to downloading and installation of the Application by the User.
+
+                <h3>6.USER’S OBLIGATIONS</h3>
+
+                The User takes full responsibility for payment of all taxes and fees that are levied or arise in the course of use of the Application /Website, including but not limited to downloading and installation of the Application by the User.
+
+                6.1You hereby certify that you are at least 18 years of age
+
+                6.2 You agree to ensure the email address provided in your account registration is valid at all times and shall keep your contact information accurate and up-to-date.
+
+                6.3 You agree to comply with all local laws and regulations governing the downloading, installation and/or use of the Application/Website, including, without limitation to, any usage rules set forth in this Agreement.
+
+                6.4 You undertake not to:
+
+                (a) Cut, copy, distribute, modify, recreate, reverse engineer, distribute, disseminate post, publish or create derivative works from, transfer, or sell any information or software obtained from the Application/Website. For the removal of doubt, it is clarified that unlimited or wholesale reproduction, copying of the content for commercial or non-commercial purposes and unwarranted modification of data and information within the content of the Application/Website is not permitted. Should You want to engage in one or more such actions, prior permission from Us must be obtained;
+
+                (b) access (or attempt to access) the Application/Website and/or the materials or Services by any means other than through the interface that is provided by the Application/Website. The use of deep-link, robot, spider or other automatic device, program, algorithm or methodology, or any similar or equivalent manual process, to access, acquire, copy or monitor any portion of the Application/Website or Content, or in any way reproduce or circumvent the navigational structure or presentation of the Application/Website, materials or any Content, to obtain or attempt to obtain any materials, documents or information through any means not specifically made available through the Application/Website is prohibited. You acknowledge and agree that by accessing or using the Application/Website or Services, You may be exposed to content from other Users or Third Parties that You may consider offensive, indecent or otherwise objectionable. We disclaim all liabilities arising in relation to such offensive content on the Application/Website. Further, You may report such offensive content;
+
+                (c) use the Application/ Website in any manner that may impair, overburden, damage, disable or otherwise compromise (i) Company’s services; (ii) any other party's use and enjoyment of company’s services; or (iii) the services and products of any Third Party (including, without limitation to, the Authorized Device);
+
+                (d) use the Services or Materials for any unlawful purposes or to conduct any unlawful activity, including, but not limited to, fraud, embezzlement, money laundering or identity theft;
+
+                (e) abuse, harass, threaten, defame, disillusion, erode, abrogate, demean or otherwise violate the legal rights of others;
+
+                (f) engage in any activity that interferes with or disrupts access to the Application/Website or the Services (or the servers and networks which are connected to the Application/Website);
+
+                (g) upload or distribute files that contain viruses, corrupted files, or any other similar software or programs that may damage the operation of the Application/Website or another's mobile phone;
+
+                (h) download any file posted in the Application/Website that you know, or reasonably should know, cannot be legally distributed in such manner;
+
+                (i) probe, scan or test the vulnerability of the Application/Website or any network connected to the Application/Website, nor breach the security or authentication measures on the Application/Website or any network connected to the Application/Website. You may not reverse look-up, trace or seek to trace any information on any other user, of or visitor to, the Application/Website, or exploit the Application/Website or Service or information made available or offered by or through the Application/Website, in any way whether or not the purpose is to reveal any information, including but not limited to personal identification information, other than Your own information, as provided for by the Application/Website;
+
+                (j) disrupt or interfere with the security of, or otherwise cause harm to, the website, the Application, systems resources, servers or networks connected to or accessible through the Application/ Website or any affiliated or linked Application/Websites;
+
+                (k) use the Application/Website or any material or Content for any purpose that is unlawful or prohibited by these Terms of Use, or to solicit the performance of any illegal activity or other activity which infringes the rights of this Application/Website or other Third Parties;
+
+                (l) violate any applicable laws or regulations for the time being in force;
+
+                (m) violate any code of conduct or other guidelines, which may be applicable for or to any particular Service;
+
+                (n) disseminate information through the Application/website that is false, inaccurate or misleading,or violate any applicable laws or regulations for the time being in force.
+
+                <h3>7.UPDATES</h3>
+
+                From time to time, the Application/Website may automatically check the version of the Application/Website installed on the Authorized Device and, if applicable, provide updates for the Application/Website (hereinafter referred to as “Updates”). Updates may contain, without limitation to, bug fixes, patches, enhanced functionality, plug-ins and new versions of the Application/Website. By installing the Application/Website, You authorize the automatic download and installation of Updates and agree to download and install Updates manually if necessary. Your use of the Application/Website and Updates shall be governed by this Agreement (as amended by any terms and conditions that may be provided with Updates).
+
+                <h3>8.ACTIONS UNDERTAKEN BY THE APPLICATION/WEBSITE ON YOUR DEVICE</h3>
+
+                Upon download and installation of the Application/Website, You grant the following permissions to the Company to perform the following actions on the device you have installed the Application/Website in.
+
+                (a) To read from, write on, modify and delete data pertaining to the Application/Website on the device’s hard disk and/or external storage;
+
+                (b) To access information about networks, access networks including Wi-Fi networks, receive and send data through the network;
+
+                (c) To determine Your approximate location from sources like, but not limited to mobile towers and connected Wi-Fi networks;
+
+                (d) To determine Your exact location from sources such as, but not limited to GPS;
+
+                (e) To access the model number, IMEI number, MAC ID and details about the operating system of the device the Application/Website has been installed on / visited as well as the phone number of the device;
+
+                (f) To retrieve information about other application running on the device the Application has been installed on and open them;
+
+                (g) To detect when the phone had been switched off and switched on for the purpose of sending notification/ push notifications;
+
+                (h) To access and change the display and sound settings of the device the Application has been installed in.
+
+                <h3>9.COPYRIGHT</h3>
+
+                (a) All information, content, services and software displayed on, transmitted through, or used in connection with the Application/Website, including for example news articles, reviews, directories, guides, text, photographs, images, illustrations, flash files, simulations, audio clips, video, html, source and object code, trademarks, logos, and the like (collectively and hereinafter referred to as the "Content"), as well as its selection and arrangement, is owned by Us. You may use the Content only through the Application/Website, and solely for your personal, non-commercial use.
+
+                (b) You may not, republish any portion of the Content on any Internet, Intranet or extranet site or incorporate the Content in any database, compilation, archive or cache. You may not distribute any Content to others, whether or not for payment or other consideration, and you may not modify, copy, frame, cache, reproduce, sell, publish, transmit, display or otherwise use any portion of the Content. You may not scrape or otherwise copy our Content without permission. You agree not to decompile, reverse engineer or disassemble any software or other products or processes accessible through the Application/ Website, not to insert any code or product or manipulate the content of the Application/Website in any way that affects the user's experience, and not to use any data mining, data gathering or extraction method.
+
+                <h3>10.COPYRIGHT COMPLAINTS</h3>
+
+                (a) We respect the intellectual property of others. If You believe or are aware of any infringing material on the Application/Website, please contact Us at 18001024793 / email us at customercare@milifecare.com.
+
+                (b) Information and Content provided by the User by providing information to, communicating with, and/or placing material on, the Application/Website, including for example but not limited to, communication during any registration and communication on the bulletin board, message or chat area, You represent and warrant:
+
+                (1) You own or otherwise have all necessary rights to the content you provide and the rights to use it as provided in this Terms of Service;
+
+                (2) all information You provide is true, accurate, current and complete, and does not violate these Terms of Service; and,
+
+                (3) the information and Content shall not cause injury to any person or entity. Using a name other than your own legal name is prohibited (except in those specific areas of the Application/Website that specifically ask for unique, fictitious names such as, inter alia certain message boards and chat rooms).
+
+                For all such information and material, you grant us, a royalty-free, perpetual, irrevocable, non-exclusive right and license to use, copy, modify, display, archive, store, distribute, reproduce and create derivative works from such information, in any form, media, software or technology of any kind now existing or developed in the future. Without limiting the generality of the previous sentence, you authorize us to share the information across all our affiliated Application/Websites, to include the information in a searchable format accessible by users of the Application/Website and other affiliated Application/Websites, and to use your name and any other information in connection with its use of the material you provide. You also grant the right to use any material, information, ideas, concepts, know-how or techniques contained in any communication you send to us for any purpose whatsoever, including but not limited to developing, manufacturing and marketing products using such information. All rights in this paragraph are granted without the need for additional compensation of any sort to you.
+
+                <h3>11.GEOGRAPHICAL EXTENT</h3>
+
+                (a) The Application/Website can be used in the territory of India. we make no representation that materials or Content available through our Application/Website is appropriate or available for use outside of this country (India).
+
+                (b) If You access or use the Application/Website from a country or location outside of India, You are solely responsible for compliance with necessary laws and regulations for use of the Application/Website.
+
+                <h3>12.AMENDMENT</h3>
+
+                (a) We may modify, replace, refuse access to, suspend or discontinue the Services, partially or entirely, or add, change and modify prices for all or part of the Services for You or for all Users at any time and in Our sole discretion. These changes shall become effective upon providing a notice of the same to You via email/ the home screen of the Application/Website. We further reserve the right to withhold, remove and or discard any content available as part of Your account, with or without notice, if deemed by Us to be contrary to this Agreement.
+
+                (b) Ni-Lifecare has no obligation to provide You with a copy of the information You or any other User provides on the Application/Website or that the Application/Website has accessed.
+
+                (c) Further, We reserve the right, in Our sole discretion, to modify or replace any part of this Agreement at any time, effective upon the date of giving Users notice of the same. Notice shall be provided of such change via email to the Users and/ or by posting a notice on the home screen of the Application/Website.
+
+                You and We both understand that there may be instances of difficulty in accessing or receiving email communication. We are not responsible if any email notice gets caught by Your SPAM folder, or if You do not see the email, or if You have given us an incorrect email id or if for any other reason You do not receive the email notice. Therefore, we encourage you to frequently open the Application/Website to monitor any changes. Your continued use of or access to the Services following the posting of any changes to this Agreement constitutes acceptance of those changes. We may also, in the future, offer new services and/ or features through the Application/Website. Such new features and/ or services shall be subject to the terms and conditions of this Agreement.
+
+                <h3>13.INDEMNIFICATION</h3>
+
+                You agree to indemnify, hold harmless, and defend Us from and against any and all liability, loss, claim, damages, expense, or costs (including but not limited to attorneys' fees), incurred by or made Us in connection with any claim arising from or related to:
+
+                (a) Your use or any Third Party’s use via Your account of the Service provided by the Application/Website and its Content;
+
+                (b) Your disclosure of information to any Third Party, either through the Application/Website or otherwise. (Please refer to our Privacy Policy for more details in this regard);
+
+                (c) Any breach or violation of this Agreement, including any amendment, or of any statute or regulation by you, or any Third Party through Your account.
+
+                You agree to fully cooperate in indemnifying us at your expense. You also agree not to reach a settlement with any party without our consent.
+
+                <h3>14.DISPUTES ARISING OUT OF THIS AGREEMENT</h3>
+
+                All disputes involving but not limited to rights conferred, compensation, refunds, and other claims will be resolved through a two-step Alternate Dispute Resolution mechanism.
+
+                .
+                14.1 Stage 1: Mediation. In case of a dispute, the matter will first be attempted to be resolved by a sole mediator who is a neutral third party and will be selected at the mutual acceptance of a proposed mediator by both parties. Both parties may raise a name for the sole mediator and in the case both parties accept the proposed name, the said person shall be appointed as sole mediator. In case the parties are not able to reach a consensus within two proposed mediators, the sole proprietorship reserves the right to decide who the final mediator is. The decision of the mediator is not binding on both parties.
+
+                14.2 Stage 2: Arbitration. In case that mediation does not yield a result suitable or preferred by any one of the parties, arbitration may follow, the award of which is binding on both parties. The Arbitration Board shall comprise three members – one appointed by each party and the third member to be nominated by the two appointed members by mutual consent. Arbitration shall be held at [ ]. The proceedings of arbitration shall be in the English language. The arbitrator’s award shall be final and binding on the Parties.
+                The formation, interpretation and performance of this Agreement and any disputes arising out of it shall be governed by the law, rules and regulations of [_____]. The exclusive jurisdiction and venue for actions and disputes mentioned above shall be the courts located in [_____], and you hereby submit to the personal jurisdiction of such courts.
+
+                <h3>15.PRIVACY</h3>
+
+                We encourage you to read the Privacy Policy, and to use the information it contains to make informed decisions regarding your personal information. Please also note that certain information, statements, data and content (such as but not limited to photographs) which you provide on the Application/Websiteare likely to reveal Your gender, ethnic origin, nationality, age, and/or other personal information about You. You acknowledge and agree that your submission of such information is voluntary on Your part. Further, You acknowledge, consent and agree that we may access, preserve, and disclose information You provide to Us at any stage during Your use of the Application/Website. Disclosures of information to Third Parties are further addressed in Our Privacy Policy.
+
+                <h3>16.MISCELLANEOUS PROVISIONS</h3>
+
+                (a) Entire Agreement: This Agreement is the complete and exclusive statement of the agreements between You and Us with respect to the subject matter hereof and supersedes all other communications or representations or agreements (whether oral, written or otherwise) relating thereto.
+
+                (b) Waiver: The failure of either party at any time to require performance of any provision of this Agreement in no manner shall affect such party's right at a later time to enforce the same. No waiver by either party of any breach of this Agreement, whether by conduct or otherwise, in any one or more instances, shall be deemed to be, or construed as, a further or continuing waiver of any other such breach, or a waiver of any other breach of this Agreement.
+
+                (c) Severability: If any provision of this Agreement shall to any extent be held invalid, illegal or unenforceable, the validity, legality and enforceability of the remaining provisions of this Agreement shall in no way be affected or impaired thereby and each such provision of this Agreement shall be valid and enforceable to the fullest extent permitted by law. In such case, this Agreement shall be reformed to the minimum extent necessary to correct any invalidity, illegality or unenforceability, while preserving to the maximum extent the rights and commercial expectations of the parties hereto, as expressed here in.
+
+            </div>
+            <div class="col-sm-1">
+                <!--   sdfddf -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<div class="container-fluid">
+
+</div>
+
+<div class="container-fluid" style="background-color:#34495e;color:#ecf0f1;">
+
+</div>
+<div class="row-sm-12 row-md-12 row-lg-12" >
+    <footer id="footer"  >
+        <div class="bg-black dker wrapper-fixed "  style="background-color: #34495e;margin-bottom:0px">
+            <div class="container"  >
+                <div class="row"  >
+                    <!-- <img src="/images/milogo.png" id="logo" style="width:100px;height:100px;"></img>-->
+
+                    <div  style="margin-top:3%;color:white;margin-left:0%;text-align: center;margin-bottom:0px">
+                        <div class="col-sm-2 col-md-2  col-lg-2" style="margin-top:2%;margin-bottom:0px">
+                            <a href="#"><img src="/home/images/milogo.png" id="logo" style="width:100px;height:100px;margin-bottom:0px"></a>
+                        </div>
+                        <div class=" col-sm-10 col-sm-gt-12 col-md-8 col-md-gt-8 col-lg-10" style="margin-top:2%;margin-bottom:0px">
+                            <a href="#AboutUs" style="color: white;text-decoration: none;">About us&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                            <a href="" style="color: white;text-decoration: none;" onclick="btop()" ng-click="showme=7">Contact us&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                            <a href="" style="color: white;text-decoration: none;" onclick="btop()" ng-click="showme=4">Partner with us&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                            <a href="" style="color: white;text-decoration: none;" onclick="btop()" ng-click="showme=6">Employee Program&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                            <a href="" style="color: white;text-decoration: none;" onclick="btop()" ng-click="showme=5">Referral Program&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                            <a href="" style="color: white;text-decoration: none;" onclick="btop()" ng-click="showme=8">Privacy&Policy&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                            <a href="" style="color: white;text-decoration: none;" onclick="btop()" ng-click="showme=9">Terms of service&nbsp;&nbsp;&nbsp;&nbsp;</a></br><hr>
+                            <span style="text-align:center;">© Copyrights 2015 - 2016 Mi-LifeCare | All Rights Reserved.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('#back-to-top').fadeIn();
+                } else {
+                    $('#back-to-top').fadeOut();
+                }
+            });
+            // scroll body to 0px on click
+            $('#back-to-top').click(function () {
+                $('#back-to-top').tooltip('hide');
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
+            });
+
+            $('#back-to-top').tooltip('show');
+
+        });
+
+    </script>
+
+
+</div>
+
+
+
+
+
+
+
